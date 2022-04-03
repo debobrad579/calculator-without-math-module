@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @format_complex
 def solve(equation: str):
-    equation = equation.replace("^", "**").replace("j", "1j")
+    equation = equation.replace("^", "**")
     return eval(equation)
 
 
