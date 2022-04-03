@@ -1,11 +1,6 @@
 from constants import i
 
-
-def basically_int(x):
-    return int(x) if int(x) - 0.000001 < x < int(x) + 0.000001 else x
-
-def basically_zero(x):
-    return -0.000001 < x < 0.000001
+basically_int = lambda x: int(x) if int(x) - 0.000001 < x < int(x) + 0.000001 else x
 
 
 def format_complex(func):
@@ -14,10 +9,10 @@ def format_complex(func):
         real = basically_int(result.real)
         imag = basically_int(result.imag)
 
-        if basically_zero(imag):
+        if imag == 0:
             return real
         
-        if basically_zero(real):
+        if real == 0:
             return imag * i
 
         return real + imag * i

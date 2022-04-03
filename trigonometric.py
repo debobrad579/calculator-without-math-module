@@ -2,135 +2,31 @@ from util import format_complex
 from constants import pi, e, i
 from exponential import sqrt, ln
 
+degrees = lambda x: x * (180 / pi)
+radians = lambda x: x * (pi / 180)
 
-def degrees(x):
-    return round(x * (180 / pi), 2)
-
-
-def radians(x):
-    return x * (pi / 180)
-
-
-@format_complex
-def sin(x):
-    return 0.5 * i * e ** (-i * x) - 0.5 * i * e ** (i * x)
-
-
-@format_complex
-def cos(x):
-    return 0.5 * e ** (-i * x) + 0.5 * e ** (i * x)
-
-
-@format_complex
-def tan(x):
-    return sin(x) / cos(x)
-
-
-@format_complex
-def asin(x):
-    return -i * ln(sqrt(1 - x ** 2) + i * x)
-
-
-@format_complex
-def acos(x):
-    return pi / 2 + i * ln(sqrt(1 - x ** 2) - x * i)
-
-
-@format_complex
-def atan(x):
-    return 0.5 * i * ln(1 - i * x) - 0.5 * i * ln(1 + i * x)
-
-
-@format_complex
-def atan2(y, x):
-    return atan(y / x)
-
-
-@format_complex
-def sec(x):
-    return 1 / cos(x)
-
-
-@format_complex
-def csc(x):
-    return 1 / sin(x)
-
-
-@format_complex
-def cot(x):
-    return 1 / tan(x)
-
-
-@format_complex
-def asec(x):
-    return acos(1 / x)
-
-
-@format_complex
-def acsc(x):
-    return asin(1 / x)
-
-
-@format_complex
-def acot(x):
-    return atan(1 / x)
-
-
-@format_complex
-def sinh(x):
-    return (e ** x - e ** (-x)) / 2
-
-
-@format_complex
-def cosh(x):
-    return (e ** x + e ** (-x)) / 2
-
-
-@format_complex
-def tanh(x):
-    return sinh(x) / cosh(x)
-
-
-@format_complex
-def asinh(x):
-    return ln(x + sqrt(x ** 2 + 1))
-
-
-@format_complex
-def acosh(x):
-    return ln(x + sqrt(x ** 2 - 1))
-
-
-@format_complex
-def atanh(x):
-    return 0.5 * ln((1 + x) / (1 - x))
-
-
-@format_complex
-def sech(x):
-    return 1 / cosh(x)
-
-
-@format_complex
-def csch(x):
-    return 1 / sinh(x)
-
-
-@format_complex
-def coth(x):
-    return 1 / tanh(x)
-
-
-@format_complex
-def asech(x):
-    return acosh(1 / x)
-
-
-@format_complex
-def acsch(x):
-    return asinh(1 / x)
-
-
-@format_complex
-def acoth(x):
-    return atanh(1 / x)
+sin = format_complex(lambda x: 0.5 * i * e ** (-i * x) - 0.5 * i * e ** (i * x))
+cos = format_complex(lambda x: 0.5 * e ** (-i * x) + 0.5 * e ** (i * x))
+tan = format_complex(lambda x: sin(x) / cos(x))
+sec = format_complex(lambda x: 1 / cos(x))
+csc = format_complex(lambda x: 1 / sin(x))
+cot = format_complex(lambda x: cos(x) / sin(x))
+sinh = format_complex(lambda x: (e ** x - e ** (-x)) / 2)
+cosh = format_complex(lambda x: (e ** x + e ** (-x)) / 2)
+tanh = format_complex(lambda x: sinh(x) / cosh(x))
+sech = format_complex(lambda x: 1 / cosh(x))
+csch = format_complex(lambda x: 1 / sinh(x))
+coth = format_complex(lambda x: cosh(x) / sinh(x))
+asin = format_complex(lambda x: -i * ln(i * x + sqrt(1 - x ** 2)))
+acos = format_complex(lambda x: pi / 2 - asin(x))
+atan = format_complex(lambda x: i * ln(i * x + sqrt(1 - x ** 2)))
+atan2 = format_complex(lambda y, x: atan(y / x))
+asec = format_complex(lambda x: acos(1 / x))
+acsc = format_complex(lambda x: asin(1 / x))
+acot = format_complex(lambda x: pi / 2 - atan(x))
+asinh = format_complex(lambda x: i * ln(x + sqrt(x ** 2 + 1)))
+acosh = format_complex(lambda x: i * ln(x + sqrt(x ** 2 - 1)))
+atanh = format_complex(lambda x: i * ln((1 + x) / (1 - x)))
+asech = format_complex(lambda x: i * ln(1 / x + sqrt(1 - 1 / x ** 2)))
+acsch = format_complex(lambda x: i * ln(1 / x - sqrt(1 - 1 / x ** 2)))
+acoth = format_complex(lambda x: (1 + x) / (1 - x))

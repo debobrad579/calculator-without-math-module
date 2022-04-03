@@ -1,9 +1,10 @@
 from util import format_complex
 from constants import i
 
-
-def sqrt(x):
-    return x ** 0.5 if x >= 0 else abs(x) ** 0.5 * i
+pow = lambda x, y: x ** y
+sqrt = lambda x: x ** 0.5 if x >= 0 else abs(x) ** 0.5 * i
+nth_root = lambda x, n: x ** (1 / n)
+ln = format_complex(lambda x: 100000000.0 * ((x ** (1/100000000.0)) - 1))
 
 
 def log(x: float, base: float) -> float:
@@ -19,9 +20,3 @@ def log(x: float, base: float) -> float:
         n /= base
         
     return result
-
-
-@format_complex
-def ln(x):
-    n = 100000000.0
-    return n * ((x ** (1/n)) - 1)
