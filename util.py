@@ -18,3 +18,11 @@ def format_complex(func):
         return real + imag * i
     
     return wrapper
+
+
+def append_multiplication(string):
+    for i in ["0", "1", "2", "3", "4", "5","6", "7", "8", "9", ")", "e", "i"]:
+        for j in ["(", "e", "i","p", "s", "c", "t", "a"]:
+                string = string.replace(f"{i}{j}", f"{i}*{j}")
+    
+    return string

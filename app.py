@@ -1,10 +1,13 @@
 from flask import Flask, jsonify, render_template, request
+from util import *
 from constants import *
 from number_theoretic import *
 from exponential import *
 from trigonometric import *
 
-solve = format_complex(lambda equation: eval(equation.replace("^", "**").replace("Ψ", "+")))
+solve = format_complex(
+    lambda equation: eval(append_multiplication(equation.replace("^", "**").replace("Ψ", "+")))
+)
 
 app = Flask(__name__)
 
