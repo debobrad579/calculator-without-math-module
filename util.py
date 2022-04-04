@@ -6,6 +6,10 @@ basically_int = lambda x: int(x) if int(x) - 0.000001 < x < int(x) + 0.000001 el
 def format_complex(func):
     def wrapper(x):
         result = func(x)
+
+        if not isinstance(result, complex):
+            return result
+
         real = basically_int(result.real)
         imag = basically_int(result.imag)
 

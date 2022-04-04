@@ -1,7 +1,7 @@
 from util import format_complex
 from constants import e, i
 
-sqrt = lambda x: x ** 0.5 if x >= 0 else abs(x) ** 0.5 * i
+sqrt = lambda x: x ** 0.5
 nth_root = lambda x, n: x ** (1 / n)
 pow = lambda x, y: x ** y
 exp = lambda x: e ** x

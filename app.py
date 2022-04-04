@@ -6,9 +6,14 @@ from exponential import *
 from trigonometric import *
 from special import *
 
-solve = format_complex(
-    lambda equation: eval(append_multiplication(equation.replace("^", "**").replace("Ψ", "+")))
-)
+
+@format_complex
+def solve(equation):
+    try:
+        return eval(append_multiplication(equation.replace("^", "**").replace("Ψ", "+")))
+    except Exception as error:
+        return error
+
 
 app = Flask(__name__)
 
