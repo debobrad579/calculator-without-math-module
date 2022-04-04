@@ -21,8 +21,10 @@ def format_complex(func):
 
 
 def append_multiplication(string):
+    string = string.replace("ial", "zzl").replace("eil", "xxl")
+
     for i in ["0", "1", "2", "3", "4", "5","6", "7", "8", "9", ")", "e", "i"]:
         for j in ["(", "e", "i","p", "s", "c", "t", "a"]:
                 string = string.replace(f"{i}{j}", f"{i}*{j}")
     
-    return string
+    return string.replace("zzl", "ial").replace("xxl", "eil")
