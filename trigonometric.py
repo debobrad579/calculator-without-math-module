@@ -2,8 +2,8 @@ from util import format_complex
 from constants import pi, e, i
 from exponential import sqrt, ln
 
-degrees = lambda x: x * (180 / pi)
-radians = lambda x: x * (pi / 180)
+deg = lambda x: x * (180 / pi)
+rad = lambda x: x * (pi / 180)
 
 sin = format_complex(lambda x: 0.5 * i * e ** (-i * x) - 0.5 * i * e ** (i * x))
 cos = format_complex(lambda x: 0.5 * e ** (-i * x) + 0.5 * e ** (i * x))

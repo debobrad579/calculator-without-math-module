@@ -4,6 +4,7 @@ from constants import *
 from number_theoretic import *
 from exponential import *
 from trigonometric import *
+from special import *
 
 solve = format_complex(
     lambda equation: eval(append_multiplication(equation.replace("^", "**").replace("Ψ", "+")))
