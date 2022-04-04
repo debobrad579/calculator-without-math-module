@@ -27,7 +27,11 @@ def index():
 def api_all():
     if request.args.get("equation"):
         equation = request.args.get("equation")
-        return jsonify({"equation": str(solve(equation)).replace("j", "i")})
+
+        if isinstance(solve(equation), Exception):
+            return jsonify({"equation": str(solve(equation))})
+
+        return jsonify({"equation": str(solve(equation)).replace("j", "i").replace("e+", "e").replace("e", "ᴇ")})
 
 
 if __name__ == "__main__":

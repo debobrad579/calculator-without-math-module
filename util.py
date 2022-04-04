@@ -7,6 +7,9 @@ def format_complex(func):
     def wrapper(x):
         result = func(x)
 
+        if isinstance(result, (int, float)) and result >= 1000000000:
+            return "{:.15e}".format(result)
+
         if not isinstance(result, complex):
             return result
 
